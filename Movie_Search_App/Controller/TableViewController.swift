@@ -12,26 +12,36 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // implement custom cell
+        
+        // implement delegate and datasource
+        
+        
+        // Create a network object
+        var network = Network()
+        
         Network.loadMovies { success,data in
             if let data {
                 self.movies = data
-                print("debug-- Network.loadMovies = \(self.movies)")
-//                self.tableView.reloadData()
+                print("debug-- Network.loadMovies = \(self.movies[0])")
+            } else {
+                print("Network request failed")
             }
         }
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+    
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 0
+//    }
 
     
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,6 +86,14 @@ class TableViewController: UITableViewController {
     }
     */
 
+    
+     
+     
+    // MARK: - Update Movie List
+    
+    func didUpdateMovieList(movieList : [Movie]) {
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -83,6 +101,9 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+     if segue.identifier == "goToMovieDetail" {
+     let destinationVC = segue.destination as! MovieDetailViewController
+     destinationVC.movieTitle
     }
     */
 

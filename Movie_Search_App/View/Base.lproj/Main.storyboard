@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,10 +40,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="nl7-Pg-mdx"/>
+                    <connections>
+                        <segue destination="hau-gG-fvD" kind="presentation" identifier="goToMovieDetail" id="be5-Wc-Q7k"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsi-IQ-uP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="961.06870229007632" y="-47.183098591549296"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="2F3-dc-QwX">
+            <objects>
+                <viewController id="hau-gG-fvD" customClass="MovieDetailViewController" customModule="Movie_Search_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BGv-HA-dtu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YtJ-OP-i1g"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FBd-45-qMg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1810" y="-47"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6gN-5T-Rln">

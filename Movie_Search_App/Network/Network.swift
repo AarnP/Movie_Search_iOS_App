@@ -7,7 +7,9 @@
 
 import Foundation
 
+
 struct Network {
+    
     static func loadMovies(_ completion: @escaping (_ success: Bool, _ data: [Movie]?) -> Void){
         let headers = [
             "accept": "application/json",
