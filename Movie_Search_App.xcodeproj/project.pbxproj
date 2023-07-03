@@ -17,7 +17,8 @@
 		F76BE4252A46F1F40058015E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BE4242A46F1F40058015E /* TableViewController.swift */; };
 		F76BE4282A46F3500058015E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BE4272A46F3500058015E /* Network.swift */; };
 		F76BE42B2A46F3AB0058015E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BE42A2A46F3AB0058015E /* Movie.swift */; };
-		F76BE42D2A487B4F0058015E /* MoviePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BE42C2A487B4F0058015E /* MoviePoster.swift */; };
+		F76BE4302A4953110058015E /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BE42E2A4953110058015E /* MovieCell.swift */; };
+		F76BE4312A4953110058015E /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F76BE42F2A4953110058015E /* MovieCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,8 @@
 		F76BE4242A46F1F40058015E /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		F76BE4272A46F3500058015E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		F76BE42A2A46F3AB0058015E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		F76BE42C2A487B4F0058015E /* MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePoster.swift; sourceTree = "<group>"; };
+		F76BE42E2A4953110058015E /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		F76BE42F2A4953110058015E /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				F76BE4112A4556470058015E /* Main.storyboard */,
+				F76BE42E2A4953110058015E /* MovieCell.swift */,
+				F76BE42F2A4953110058015E /* MovieCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				F76BE42A2A46F3AB0058015E /* Movie.swift */,
-				F76BE42C2A487B4F0058015E /* MoviePoster.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			files = (
 				F76BE41B2A4556490058015E /* LaunchScreen.storyboard in Resources */,
 				F76BE4182A4556490058015E /* Assets.xcassets in Resources */,
+				F76BE4312A4953110058015E /* MovieCell.xib in Resources */,
 				F76BE4132A4556470058015E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,8 +190,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76BE42B2A46F3AB0058015E /* Movie.swift in Sources */,
-				F76BE42D2A487B4F0058015E /* MoviePoster.swift in Sources */,
 				F76BE4102A4556470058015E /* MovieDetailViewController.swift in Sources */,
+				F76BE4302A4953110058015E /* MovieCell.swift in Sources */,
 				F76BE40C2A4556470058015E /* AppDelegate.swift in Sources */,
 				F76BE4282A46F3500058015E /* Network.swift in Sources */,
 				F76BE4162A4556470058015E /* Movie_Search_App.xcdatamodeld in Sources */,

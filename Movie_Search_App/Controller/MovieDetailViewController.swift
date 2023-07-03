@@ -8,10 +8,22 @@
 import UIKit
 
 class MovieDetailViewController: UIViewController {
+    
+    var movieData : Movie?
 
+    @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var poster: UIImageView!
+    @IBOutlet weak var overview: UILabel!
+    @IBOutlet weak var releaseDate: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if movieData != nil {
+            movieTitle.text = movieData?.title
+            overview.text = movieData?.overview
+            releaseDate.text = movieData?.releaseDate
+        }
     }
 
 
