@@ -10,6 +10,8 @@ import CoreData
 
 class TableViewController: UIViewController {
     var movies: [Movie] = []
+    var moviesDB: [MoviesData] = []
+    var moviesFilterData: [Movie] = []
     
     var poster: [ImageData] = []
     var imageCache = NSCache<NSString, UIImage>()
@@ -27,26 +29,32 @@ class TableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+
         Network.loadMovies { success,data in
             if let data {
                 self.movies = data
+                self.moviesFilterData = self.movies
                 print("debug-- Network.loadMovies = \(self.movies[0])")
             } else {
                 print("Network request failed")
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        loadMovie()
+        
         tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        
+        searchBar.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
                         
     }
     
     func getMoviePosterURL() {
-        for movie in movies {
+        for movie in moviesFilterData {
             URLPath = "\(movie.moviePosterURL)\(movie.posterPath)"
             posterURL.append(URLPath)
         }
@@ -61,20 +69,24 @@ class TableViewController: UIViewController {
         
     }
     
-//    func loadMovie() {
-//        do {
-//
-//        } catch {
-//
-//        }
-//    }
+    func loadMovie() {
+        let request : NSFetchRequest<MoviesData> = MoviesData.fetchRequest()
+        do {
+            moviesDB = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+        
+        
+    }
 }
 // MARK: - Table view data source
 
 extension TableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return moviesFilterData.count
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,16 +101,18 @@ extension TableViewController: UITableViewDataSource, UITableViewDelegate {
         let currentPosterPath = posterURL[indexPath.row]
         let currentPosterURLPath = URL(string: currentPosterPath)!
         
-        cell.movieTitle.text = self.movies[indexPath.row].title
-        cell.releaseDate.text = self.movies[indexPath.row].releaseDate
+        cell.movieTitle.text = self.moviesFilterData[indexPath.row].title
+        cell.releaseDate.text = self.moviesFilterData[indexPath.row].releaseDate
+        
         
         let newMovieAdded = MoviesData(context: self.context)
-        newMovieAdded.title = self.movies[indexPath.row].title
-        newMovieAdded.releaseDate = self.movies[indexPath.row].releaseDate
-        newMovieAdded.overview = self.movies[indexPath.row].overview
-        newMovieAdded.posterPath = self.movies[indexPath.row].posterPath
-        newMovieAdded.moviePosterURL = "\(self.movies[indexPath.row].moviePosterURL)\(self.movies[indexPath.row].posterPath)"
+        newMovieAdded.title = self.moviesFilterData[indexPath.row].title
+        newMovieAdded.releaseDate = self.moviesFilterData[indexPath.row].releaseDate
+        newMovieAdded.overview = self.moviesFilterData[indexPath.row].overview
+        newMovieAdded.posterPath = self.moviesFilterData[indexPath.row].posterPath
+        newMovieAdded.moviePosterURL = "\(self.moviesFilterData[indexPath.row].moviePosterURL)\(self.moviesFilterData[indexPath.row].posterPath)"
         self.saveMovie()
+
         
         // check if the image is already in the cache
         if let cachedImage = imageCache.object(forKey: currentPosterPath as NSString) {
@@ -157,13 +171,31 @@ extension TableViewController: UITableViewDataSource, UITableViewDelegate {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if let destinationVC = segue.destination as? MovieDetailViewController, let indexPath = sender as? IndexPath {
-            destinationVC.movieData = movies[indexPath.row]
+            destinationVC.movieData = moviesFilterData[indexPath.row]
             
             let currentPosterPath = posterURL[indexPath.row]
             let currentPosterURLPath = URL(string: currentPosterPath)!
             let getImageData = getImageDataFromDisk(imageURL: currentPosterURLPath)
             destinationVC.posterData = getImageData
         }
+    }
+}
+
+extension TableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        moviesFilterData = []
+        
+        if searchText == "" {
+            moviesFilterData = movies
+        }
+        
+        for movie in movies {
+            if movie.title.uppercased().contains(searchText.uppercased()) {
+                moviesFilterData.append(movie)
+            }
+        }
+        self.tableView.reloadData()
     }
 }
 

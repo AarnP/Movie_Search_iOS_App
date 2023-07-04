@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MovieDetailViewController: UIViewController {
     
@@ -27,11 +28,7 @@ class MovieDetailViewController: UIViewController {
             movieTitle.text = movieData?.title
             overview.text = movieData?.overview
             releaseDate.text = movieData?.releaseDate
-            poster.image = posterImage
-            
         }
     }
-
-
 }
 
