@@ -19,6 +19,7 @@
 		F76BE42B2A46F3AB0058015E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BE42A2A46F3AB0058015E /* Movie.swift */; };
 		F76BE4302A4953110058015E /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BE42E2A4953110058015E /* MovieCell.swift */; };
 		F76BE4312A4953110058015E /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F76BE42F2A4953110058015E /* MovieCell.xib */; };
+		F76BE4332A52A1AC0058015E /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76BE4322A52A1AC0058015E /* ImageData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F76BE42A2A46F3AB0058015E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F76BE42E2A4953110058015E /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		F76BE42F2A4953110058015E /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
+		F76BE4322A52A1AC0058015E /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +79,6 @@
 				F76BE4172A4556490058015E /* Assets.xcassets */,
 				F76BE4192A4556490058015E /* LaunchScreen.storyboard */,
 				F76BE41C2A4556490058015E /* Info.plist */,
-				F76BE4142A4556470058015E /* Movie_Search_App.xcdatamodeld */,
 			);
 			path = Movie_Search_App;
 			sourceTree = "<group>";
@@ -112,7 +113,9 @@
 		F76BE4292A46F3980058015E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F76BE4142A4556470058015E /* Movie_Search_App.xcdatamodeld */,
 				F76BE42A2A46F3AB0058015E /* Movie.swift */,
+				F76BE4322A52A1AC0058015E /* ImageData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				F76BE4302A4953110058015E /* MovieCell.swift in Sources */,
 				F76BE40C2A4556470058015E /* AppDelegate.swift in Sources */,
 				F76BE4282A46F3500058015E /* Network.swift in Sources */,
+				F76BE4332A52A1AC0058015E /* ImageData.swift in Sources */,
 				F76BE4162A4556470058015E /* Movie_Search_App.xcdatamodeld in Sources */,
 				F76BE4252A46F1F40058015E /* TableViewController.swift in Sources */,
 				F76BE40E2A4556470058015E /* SceneDelegate.swift in Sources */,
